@@ -1,0 +1,9 @@
+D:\visual studio\Conference\Conference.Domain\bin\Debug\netstandard2.0\Conference.Domain.deps.json
+D:\visual studio\Conference\Conference.Domain\bin\Debug\netstandard2.0\Conference.Domain.dll
+D:\visual studio\Conference\Conference.Domain\obj\Debug\netstandard2.0\Conference.Domain.csprojAssemblyReference.cache
+D:\visual studio\Conference\Conference.Domain\obj\Debug\netstandard2.0\Conference.Domain.csproj.CoreCompileInputs.cache
+D:\visual studio\Conference\Conference.Domain\obj\Debug\netstandard2.0\Conference.Domain.AssemblyInfoInputs.cache
+D:\visual studio\Conference\Conference.Domain\obj\Debug\netstandard2.0\Conference.Domain.AssemblyInfo.cs
+D:\visual studio\Conference\Conference.Domain\bin\Debug\netstandard2.0\Conference.Domain.pdb
+D:\visual studio\Conference\Conference.Domain\obj\Debug\netstandard2.0\Conference.Domain.dll
+D:\visual studio\Conference\Conference.Domain\obj\Debug\netstandard2.0\Conference.Domain.pdb
