@@ -42,7 +42,7 @@ namespace Conference.Controllers
         // POST: Edition/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EditionViewModel model)
+        public ActionResult Create(EditionsViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace Conference.Controllers
         public ActionResult Edit(int id)
         {
             var edition = editionServices.FindEditionById(id);
-            EditionViewModel model = new EditionViewModel();
+            EditionsViewModel model = new EditionsViewModel();
             model.InjectFrom(edition);
             return View(edition);
         }
@@ -71,7 +71,7 @@ namespace Conference.Controllers
         // POST: Edition/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, EditionViewModel model)
+        public ActionResult Edit(int id, EditionsViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace Conference.Controllers
         // POST: Edition/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, EditionViewModel model)
+        public ActionResult Delete(int id, EditionsViewModel model)
         {
             Editions deleteEdition = new Editions();
 

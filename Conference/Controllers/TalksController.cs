@@ -41,7 +41,7 @@ namespace Conference.Controllers
         // POST: Talks/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TalksViewModel model)
+        public ActionResult Create(TalkViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace Conference.Controllers
                 var addedTalks = talksServices.AddTalks(talksToAdd);
                 if (addedTalks == null)
                 {
-                    ModelState.AddModelError("Companyname", "The company name must be unique");
+                    ModelState.AddModelError("Name", "The name must be unique");
                     return View(model);
                 }
                 return RedirectToAction(nameof(Index));
@@ -62,7 +62,7 @@ namespace Conference.Controllers
         public ActionResult Edit(int id)
         {
             var talks = talksServices.FindTalksById(id);
-            TalksViewModel model = new TalksViewModel();
+            TalkViewModel model = new TalkViewModel();
             model.InjectFrom(talks);
 
             return View();
@@ -71,7 +71,7 @@ namespace Conference.Controllers
         // POST: Talks/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, TalksViewModel model)
+        public ActionResult Edit(int id, TalkViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace Conference.Controllers
         // POST: Talks/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, TalksViewModel model)
+        public ActionResult Delete(int id, TalkViewModel model)
         {
             Talks deleteTalks = new Talks();
 

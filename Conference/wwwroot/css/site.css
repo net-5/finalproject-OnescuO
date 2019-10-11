@@ -2,10 +2,89 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    
+    
 }
+
+
+
+/*index*/
+.style-svg {
+    fill: #442359;
+    height: 75px;
+    text-align: center;
+}
+
+
+.n-item {
+    margin-bottom: 3rem;
+}
+
+#conf-info {
+    background-image: url("../images/bckg_full_width_2cip.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+   
+    background-size: cover;
+    color: #fff;
+    padding-bottom: 7.5rem;
+    padding-top: 7.5rem;
+    height: 20rem;
+}
+
+
+#register {
+    background-image: url("../images/bckg_full_width_3crop.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    
+    background-size: cover;
+    color: #fff;
+    padding-bottom: 7.5rem;
+    padding-top: 7.5rem;
+}
+
+section {
+    padding-bottom: 4.5rem;
+    padding-top: 2.5rem;
+}
+
+h3.special {
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0em;
+    color: #6ec2e9;
+    word-wrap: break-word;
+    font-size: 3.5rem;
+}
+
+.content {
+    min-height: calc(60vh - 7rem);
+}
+
+footer {
+    bottom: 0;
+}
+
+ul.socials-nav {
+    text-align: center;
+}
+
+    ul.socials-nav > li {
+        display: inline-block;
+        margin-right: 2rem;
+    }
+
+li.social a {
+    font-size: 4rem;
+}
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -45,14 +124,15 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+/*p.card-text {
+    font-size: 1.6rem;
 }
+.btn-info {
+    font-size: 1.6rem;
+}
+.text-info {
+    font-size: 1.6rem;
+}*/
+
 
 

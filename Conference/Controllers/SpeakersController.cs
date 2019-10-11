@@ -29,7 +29,10 @@ namespace Conference.Controllers
         // GET: Speakers/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Speakers speakers = speakersServices.FindSpeakersById(id);
+            SpeakerViewModel model = new SpeakerViewModel();
+            model.InjectFrom(speakers);
+            return View(speakers);
         }
 
         // GET: Speakers/Create
@@ -41,7 +44,7 @@ namespace Conference.Controllers
         // POST: Speakers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(SpeakersViewModel model)
+        public ActionResult Create(SpeakerViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +66,7 @@ namespace Conference.Controllers
         public ActionResult Edit(int id)
         {
             var speakers = speakersServices.FindSpeakersById(id);
-            SpeakersViewModel model = new SpeakersViewModel();
+            SpeakerViewModel model = new SpeakerViewModel();
             model.InjectFrom(speakers);
 
             return View();
@@ -72,19 +75,12 @@ namespace Conference.Controllers
         // POST: Speakers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, SpeakersViewModel model)
+        public ActionResult Edit(int id, SpeakerViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-
-                var existingSpeakers = speakersServices.FindSpeakersById(id);
-
-                TryUpdateModelAsync(existingSpeakers);
-                speakersServices.UpdateSpeakers(existingSpeakers);
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(model);
+            Speakers speakers = new Speakers();
+            speakers.InjectFrom(model);
+            var sponsorToUpdate = speakersServices.UpdateSpeakers(speakers);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Speakers/Delete/5
@@ -96,7 +92,7 @@ namespace Conference.Controllers
         // POST: Speakers/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, SpeakersViewModel model)
+        public ActionResult Delete(int id, SpeakerViewModel model)
         {
             Speakers deleteSpeakers = new Speakers();
 

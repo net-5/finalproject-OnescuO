@@ -3,112 +3,74 @@
 @{
     ViewData["Title"] = "Details";
 }
+<link  rel="stylesheet" href="~/css/styles/Speakers.css"/>
 
-<h1>Details</h1>
 
-<div>
-    <h4>Speakers</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Position)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Position)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Website)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Website)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Facebook)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Facebook)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LinkedIn)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LinkedIn)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Skype)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Skype)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GitHub)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GitHub)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Twitter)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Twitter)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CompanyName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyWebsite)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CompanyWebsite)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PageSlug)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PageSlug)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Edition)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Edition)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+
+<div class="">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-2 offset-md-2 space-big space">
+
+                <div>
+
+                    @if (Model.FirstName == "Thissen")
+                    {
+                        <img class="img-responsive img-fluid" src="~/images/alex-thissen.png" alt="Alternate Text">
+                    }
+                    @if (Model.FirstName == "Mang")
+                    {
+                        <img class="img-responsive img-fluid" src="~/images/alex-mang.png" alt="Alternate Text" />
+                    }
+                    @if (Model.FirstName == "Doomen")
+                    {
+                        <img class="img-responsive img-fluid" src="~/images/dennis-doomen (2).png" alt="Alternate Text">
+                    }
+
+
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-md-5 space-big space">
+                <h1 class="title mv">@Html.DisplayFor(model => model.FullName)</h1>
+                <h2 class="subtitle blue ">@Html.DisplayFor(model => model.Position)</h2>
+                <span class="subtitle blue">
+                    <a target="_blank" class="subtitle blue" href="@Html.DisplayFor(model => model.CompanyWebsite)">
+                        @Html.DisplayFor(model => model.CompanyName)
+                    </a>
+                </span>
+
+                <div class="speaker-socials blue">
+                    <ul>
+                        <li>
+                            <a target="_blank" class="link d-inline" href="@Html.DisplayFor(model => model.Twitter)">
+                                <img src="~/images/twitter_PNG3.png" width="30" />
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="text">
+                    <ul class="col-sm-10">
+                        @Html.DisplayFor(model => model.Description)
+                    </ul>
+                    <a asp-action="Index" style="color: #6ec2e9">Back to List</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-3 bg-mv text-center space">
+
+
+                <div class="talk-title white text-left">
+
+
+                </div>
+
+                <div style="height:15rem"></div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
