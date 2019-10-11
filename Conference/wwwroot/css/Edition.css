@@ -1,0 +1,47 @@
+﻿
+
+.col-sm-4{
+    text-size-adjust:auto;
+    color:black;
+
+}
+li.nav-item{
+    display:list-item;
+    
+}
+.nav{
+    display:flex;
+    flex-wrap:wrap;
+
+}
+.nav nav-tabs{
+    border-bottom:1px solid #dee2e6;
+}
+a.nav-link{
+    color:#442359 !important;
+    font-weight:600;
+    font-size:large;
+    padding:10px 15px;
+}
+p{
+    font-size:1.4rem;
+    line-height:2.2rem;
+    margin-bottom:2rem;
+    color:#442359;
+}
+h3{
+    font-display:auto;
+    color:#442359;
+    font-weight:600;
+}
+ul.list-unstyled {
+    line-height: 2.2rem;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: #442359;
+    list-style: disc;
+}
+
+
+
+

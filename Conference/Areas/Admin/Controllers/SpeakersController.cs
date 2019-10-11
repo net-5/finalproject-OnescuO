@@ -30,7 +30,11 @@ namespace Conference.Areas.Admin.Controllers
         // GET: Speakers/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Speakers speakers = speakersServices.FindSpeakersById(id);
+            SpeakersViewModel model = new SpeakersViewModel();
+            model.InjectFrom(speakers);
+            return View(speakers);
+            
         }
 
         // GET: Speakers/Create

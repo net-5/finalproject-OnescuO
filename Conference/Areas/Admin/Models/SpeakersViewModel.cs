@@ -19,8 +19,7 @@ namespace Conference.Areas.Admin.Models
         public string Position { get; set; }
         public string Website { get; set; }
         public string Facebook { get; set; }
-        [Required]
-        [EmailAddress]
+        
         public string Email { get; set; }
         public string LinkedIn { get; set; }
         public string Skype { get; set; }

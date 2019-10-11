@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Conference.TagHelpers
 {
     // You may need to install the Microsoft.AspNetCore.Razor.Runtime package into your project
-    [HtmlTargetElement("editions")]
+    [HtmlTargetElement("editions", Attributes = ForAttributeName)]
     public class EditionTagHelper : TagHelper
     {
         private readonly IEditionServices editionServices;

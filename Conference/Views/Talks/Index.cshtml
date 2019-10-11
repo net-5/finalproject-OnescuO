@@ -4,56 +4,58 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SpeakerId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Edition)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpeakerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Edition)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="">
+    <div class="container-fluid" id="about">
+        <h1 class="title mv">Talks</h1>
+    </div>
+</div>
+
+<div class="">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                @if (item.Name == "Integrating health checks in your .NET Core solutions")
+                {
+                    <div class="col-xs-12 col-md-2 offset-md-2 space">
+                        <div class="mv highlight">
+                            <img class="img-responsive img-fluid" src="~/images/alex-thissen.png" alt="Alternate Text" style="display:flex" />
+                            @Html.DisplayFor(modelItem => item.Name)
+                            
+
+                        </div>
+                        <div class="subtitle blue">
+                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        </div>
+                    </div>
+                }
+                @if (item.Name == "I'm Confused: Should I Orchestrate My Containers on Service Fabric or AKS")
+                {
+                    <div class="col-xs-12 col-md-2 offset-md-2 space">
+                        <div class="mv highlight">
+                            <img class="img-responsive img-fluid" src="~/images/alex-mang.png" alt="Alternate Text" style="display:flex" />
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </div>
+                        <div class="subtitle blue">
+                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        </div>
+                    </div>
+                }
+                @if (item.Name == "How to Practice Test Driven Development without Shooting Yourself in the Foot")
+                {
+                    <div class="col-xs-12 col-md-2 offset-md-2 space">
+                        <div class="mv highlight">
+                            <img class="img-responsive img-fluid" src="~/images/dennis-doomen (2).png" alt="Alternate Text" style="display:flex" />
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </div>
+                        <div class="subtitle blue">
+                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

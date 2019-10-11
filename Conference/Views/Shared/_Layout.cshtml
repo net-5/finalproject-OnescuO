@@ -13,50 +13,153 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/styles/Index.css" />
+   
+    
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-default bg-mv">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Conference</a>
+                <a class="navbar-brand active" href="/">
+                    <img class="img-responsive" src="~/images/logo.png" alt="dotnetdays.ro" style="width:15.6rem; background-color: #442359;" />
+                </a>
+
                 <a class="navbar-brand" asp-area="" asp-controller="Edition" asp-action="Index">Edition</a>
                 <a class="navbar-brand" asp-area="" asp-controller="Speakers" asp-action="Index">Speakers</a>
                 <a class="navbar-brand" asp-area="" asp-controller="Sponsors" asp-action="Index">Sponsors</a>
-                <a class="navbar-brand" asp-area="" asp-controller="SponsorType" asp-action="Index">SponsorType</a>
+
                 <a class="navbar-brand" asp-area="" asp-controller="Talks" asp-action="Index">Talks</a>
                 <a class="navbar-brand" asp-area="" asp-controller="Workshop" asp-action="Index">Workshop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="menu-socials">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a href="https://www.facebook.com/dotnetdays.ro" target="_blank">
+                                <img src="~/images/Facebook_Logo_(2019).png" alt="facebook" width="30" />
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://twitter.com/dotnetdaysro" target="_blank">
+                                <img src="~/images/twitter_PNG3.png" alt="twitter" width="40" />
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://meetup.com/NET-User-Group-Iasi/" target="_blank">
+                                <img src="~/images/Meetup_Logo.png" alt="meetup" width="40" />
+                            </a>
+                        </li>
+                    </ul>
+
+
+                    <ul class="navbar-nav flex-grow-1" id="main-menu">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Home">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+
+
+    <div>
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+    <div id="newsletter" class>
+        <div class="newsletter">
+            <div class="col-md-4 offset-md-2 col-sm-12 offset-sm-0">
+                <span class="title float-right ">Stay tuned!</span>
+                <span class="subtitle float-right text-right">You’ll be the first to know when things get in motion or we have something new to share.</span>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - Conference - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="inputs">
+                    <input type="email" class="float-left col-sm-12 col-md-6 transparent" id="Email" name="Email" value placeholder="Email address*" />
+                    <span id="result" style="display: none;">Please check your email to confirm subscription!</span>
+                    <button onclick="subscribe();" class="col-sm-12 col-md-6 btn btn-primary btn-small">Subscribe to our newsletter</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container pb-3">
+            <div class="row">
+                <div class="about col-xs-12 col-md-4">
+                    <h4>Links</h4>
+                    <ul>
+                        <li>
+                            <a href="mailto:info@dotnetdays.ro">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="/Privacy">Privacy</a>
+                        </li>
+                        <li>
+                            <a href="/CoC">Cod of Conduct</a>
+                        </li>
+                        <li>
+                            <a href="/Terms & Consitions">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="current-edition col-xs-12 col-md-4">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li>
+                            <a href="/About">About</a>
+                        </li>
+                        <li>
+                            <a href="/BeASponsor">Become a Sponsor</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="socials col-xs-12 col-md-4">
+                    <h4>Socials</h4>
+                    <ul class="socials-nav" align-right>
+                        <li class="social">
+                            <a href="http://facebook.com/dotnetdays.ro" target="_blank">
+                                <img src="~/images/Facebook-Icon.jpg" width="30" />
+                            </a>
+                        </li>
+                        <li class="social">
+                            <a href="https://twitter.com/dotnetdays.ro" target="_blank">
+                                <img src="~/images/10wmt-articleLarge-v4.jpg" width="30" />
+                            </a>
+                        </li>
+                        <li class="social">
+                            <a href="https://meetup.com/NET-User-Group-Iasi/" target="_blank">
+                                <img src="~/images/meetuplogo-e1487589151246.png" width="30" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-right col-xs-12">&copy; 2019 - DotNetIasi</div>
+            </div>
         </div>
     </footer>
+
+
+
+
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -77,6 +180,11 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            initializeClock('days', deadline);
+        });
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

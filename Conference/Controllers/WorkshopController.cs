@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Conference.Domain.Entities;
+using Conference.Models;
 using Conference.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Omu.ValueInjecter;
 
 namespace Conference.Controllers
 {
@@ -19,7 +22,9 @@ namespace Conference.Controllers
         // GET: Workshop
         public ActionResult Index()
         {
-            return View();
+            var allWorkshops = workshopService.GetAllWorkshops();
+            return View(allWorkshops);
+            
         }
 
         // GET: Workshop/Details/5
@@ -37,41 +42,48 @@ namespace Conference.Controllers
         // POST: Workshop/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(WorkshopsViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                Workshops workshopToAdd = new Workshops();
+                workshopToAdd.InjectFrom(model);
+                var addedWorkshop = workshopService.AddWorkshop(workshopToAdd);
+                if (addedWorkshop == null)
+                {
+                    ModelState.AddModelError("Name", "The workshop name must be unique");
+                    return View(model);
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(model);
         }
 
         // GET: Workshop/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var workshop = workshopService.FindWorkshopById(id);
+            WorkshopsViewModel model = new WorkshopsViewModel();
+            model.InjectFrom(workshop);
+            return View(model);
         }
 
         // POST: Workshop/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, WorkshopsViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
 
+                var existingWorkshop = workshopService.FindWorkshopById(id);
+
+                TryUpdateModelAsync(existingWorkshop);
+                workshopService.UpdateWorkshop(existingWorkshop);
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(model);
         }
 
         // GET: Workshop/Delete/5
@@ -83,18 +95,17 @@ namespace Conference.Controllers
         // POST: Workshop/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, WorkshopsViewModel model)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            Workshops deleteWorkshop = new Workshops();
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            deleteWorkshop = workshopService.FindWorkshopById(id);
+
+            model.InjectFrom(deleteWorkshop);
+
+            workshopService.DeleteWorkshop(deleteWorkshop);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
